@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once(__DIR__ . "/../../../part/admin/head.phtml"); ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
+
+    <div class="py-5">
+        <div class="container">
+            <h1 class="mb-5"> Visitor Index </h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> Id </th>
+                        <th scope="col"> Fullname </th>
+                        <th scope="col"> Username </th>
+                        <th scope="col"> Email </th>
+                        <th scope="col"> Phone </th>
+                        <th scope="col"> Birthday </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($all_visitors as $visitor) { ?>
+                    <tr>
+                        <th scope="row"> <?php print($visitor->get_id()) ?> </th>
+                        <td> <?php print($visitor->get_fullname()) ?> </td>
+                        <td> <?php print($visitor->get_username()) ?> </td>
+                        <td> <?php print($visitor->get_email()) ?> </td>
+                        <td> <?php print($visitor->get_phone()) ?> </td>
+                        <td> <?php print($visitor->get_birthday()) ?> </td>
+                    </tr>
+                <?php } // foreach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../../../part/admin/script.phtml"); ?>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <?php include_once(__DIR__ . "/../part/head.phtml") ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../part/header.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <div class="py-5">
+        <div class="container">
+            <h1 class="mb-5"> Your Attendances </h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> Event </th>
+                        <th scope="col"> For </th>
+                        <th scope="col"> Description </th>
+                        <th scope="col"> Starting time </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($all_attendances_joined as $attendance_joined) { ?>
+                    <tr>
+                        <td>
+                            <a href="<?php print($base_url . "/event.php?id=" . $attendance_joined->event->get_id()) ?>" target="_blank">
+                                <?php print($attendance_joined->event->get_name()) ?>
+                            </a>
+                        </td>
+                        <td> <?php print($attendance_joined->event->get_kids_only() ? "Children" : "Everyone") ?> </td>
+                        <td> <?php print(substr($attendance_joined->event->get_description(), 0, 64) . "...") ?> </td>
+                        <td> <?php print($attendance_joined->event->get_starting_time()) ?> </td>
+                    </tr>
+                <?php } // foreach ?>
+                </tbody>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../part/script.phtml") ?>
+</body>
+</html>

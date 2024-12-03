@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once(__DIR__ . "/../../../part/admin/head.phtml"); ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
+
+    <div class="py-5">
+        <div class="container">
+            <h1 class="mb-5"> Page Index </h1>
+
+            <a class="btn btn-primary mb-3" href="<?php print($base_url . "/admin/page/add.php") ?>"> Add Page </a>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> Id </th>
+                        <th scope="col"> Menu Name </th>
+                        <th scope="col"> Title </th>
+                        <th scope="col"> Order </th>
+                        <th scope="col"> Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($all_pages as $page) { ?>
+                    <tr>
+                        <th scope="row"> <?php print($page->get_id()) ?> </th>
+                        <td> <?php print($page->get_menu_name()) ?> </td>
+                        <td> <?php print($page->get_title()) ?> </td>
+                        <td> <?php print($page->get_order()) ?> </td>
+                        <td>
+                            <a class="text-decoration-none" href="<?php print($base_url . "/page.php?id=" . $page->get_id()) ?>" target="_blank"> View </a>
+                            &nbsp; | &nbsp
+                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/page/edit.php?id=" . $page->get_id()) ?>"> Edit </a>
+                            &nbsp; | &nbsp
+                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/page/delete.php?id=" . $page->get_id()) ?>"> Delete </a>
+                        </td>
+                    </tr>
+                <?php } // foreach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../../../part/admin/script.phtml"); ?>
+</body>
+</html>

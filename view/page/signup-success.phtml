@@ -1,0 +1,23 @@
+<?php include_once(__DIR__ . "/../../config.php") ?>
+
+
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <?php include_once(__DIR__ . "/../part/head.phtml") ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../part/header.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <div class="py-5">
+        <div class="container">
+            <h1 class="mb-5"> Successfully signed up </h1>
+
+            <a class="btn btn-primary" href="<?php print($base_url . "/login.php") ?>"> Click here to login </a>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../part/script.phtml") ?>
+</body>
+</html>

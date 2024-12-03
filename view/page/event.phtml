@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <?php include_once(__DIR__ . "/../part/head.phtml") ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../part/header.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <div class="py-5">
+        <div class="container mw-720px">
+            <h1 class="mb-5"> <?php print($event->get_name()) ?> </h1>
+            <img class="d-block mb-4" src="<?php print($event->get_image_url()) ?>" />
+            <p>
+                <b> Staring time: </b>
+                <?php print($event->get_starting_time()) ?>
+            </p>
+            <p>
+                <b> For: </b>
+                <?php print($event->get_kids_only() ? "Children" : "Everyone") ?>
+            </p>
+            <div class="mb-4">
+                <?php print($event->get_description()) ?>
+            </div>
+
+            <a class="btn btn-primary" href="<?php print($base_url . "/attend.php?event-id=" . $event->get_id()) ?>">
+                Attend this event
+            </a>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../part/script.phtml") ?>
+</body>
+</html>

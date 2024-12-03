@@ -1,0 +1,54 @@
+.header > .cover {
+    display: block;
+    height: 360px;
+
+    background-image: url(/aquarium/public/img/cover.jpg);
+    background-position: center;
+}
+
+.header .logo {
+    height: 200px;
+    width: auto;
+
+    background-color: white;
+    border-radius: 50%;
+
+    position: relative;
+    top: 120px;
+}
+
+.mw-360px {
+    max-width: 360px;
+}
+
+.mw-720px {
+    max-width: 720px;
+}
+
+.text-danger {
+    color: #BB2D3B;
+}
+
+.text-success {
+    color: ##157347;
+}
+
+.border-bottom-6px {
+    border-bottom: 6px solid #1F689E;
+}
+
+.border-bottom-1px {
+    border-bottom: 1px solid lightgray;
+}
+
+.navbar-brand,
+.nav-link {
+    font-weight: bold;
+    color: #BBBBBB;
+}
+
+.nav-link.active,
+.nav-link:hover,
+.navbar-brand:hover {
+    color: #1F689E !important;
+}

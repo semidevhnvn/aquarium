@@ -1,0 +1,57 @@
+<?php include_once(__DIR__ . "/../../../../config.php"); ?>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once(__DIR__ . "/../../../part/admin/head.phtml"); ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
+
+    <form class="py-5" action=<?php print($base_url . "/admin/event/edit-submit.php") ?> method="post">
+        <div class="container mw-360px">
+            <h1 class="mb-5"> Edit Event </h1>
+
+            <input type="hidden" name="id" value="<?php print($event->get_id()) ?>">
+
+            <div class="mb-3">
+                <div class="mb-1"> For </div>
+
+                <input class="form-check-input" type="radio" name="kids-only" id="children" value="1" <?php if ($event->get_kids_only()) /* then */ print("checked") ?>>
+                <label class="form-check-label" for="children"> Children </label>
+
+                &nbsp; &nbsp; &nbsp;
+
+                <input class="form-check-input" type="radio" name="kids-only" id="everyone" value="0" <?php if (! $event->get_kids_only()) /* then */ print("checked") ?>>
+                <label class="form-check-label" for="everyone"> Everyone </label>
+            </div>
+
+            <div class="mb-3">
+                <label for="name" class="form-label"> Name </label>
+                <input type="text" class="form-control" name="name" value="<?php print($event->get_name()) ?>" id="name" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label"> Description </label>
+                <textarea class="form-control" name="description" rows="3" id="description" required><?php print($event->get_description()) ?></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="image-url" class="form-label"> Image URL </label>
+                <input type="text" class="form-control" name="image-url" value="<?php print($event->get_image_url()) ?>" id="image-url" required />
+            </div>
+
+            <div class="mb-4">
+                <label for="starting-time" class="form-label"> Starting time </label>
+                <input type="datetime-local" class="form-control" name="starting-time" value="<?php print(str_replace("CET", "T", $event->get_starting_time())) ?>" id="starting-time" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary" name="submit" value="submit"> Save </button>
+            <button type="reset" class="btn btn-secondary" name="reset"> Reset </button>
+        </div>
+    </form>
+
+    <?php include_once(__DIR__ . "/../../../part/admin/script.phtml"); ?>
+</body>
+</html>

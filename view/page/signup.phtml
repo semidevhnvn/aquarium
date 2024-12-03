@@ -1,0 +1,65 @@
+<?php include_once(__DIR__ . "/../../config.php") ?>
+
+
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <?php include_once(__DIR__ . "/../part/head.phtml") ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../part/header.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <form class="py-5" action="<?php print($base_url . "/signup-submit.php") ?>" method="post">
+        <div class="container mw-360px">
+            <h1 class="mb-5"> Sign Up </h1>
+
+            <div class="mb-3">
+                <label for="fullname" class="form-label"> Full-name </label>
+                <input type="text" class="form-control" name="fullname" pattern="[\w ]{2,32}" value="<?php if (isset($_SESSION["submitted-fullname"])) /* then */ print($_SESSION["submitted-fullname"]) ?>" id="fullname" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="username" class="form-label"> Username </label>
+                <input type="text" class="form-control" name="username" pattern="\w{2,32}" value="<?php if (isset($_SESSION["submitted-username"])) /* then */ print($_SESSION["submitted-username"]) ?>" id="username" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label"> Password </label>
+                <input type="password" class="form-control" name="password" pattern="[\w!@#$%^&*]{8,32}" id="password" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="confirm-password" class="form-label"> Re-enter Password </label>
+                <input type="password" class="form-control" name="confirm-password" pattern="[\w!@#$%^&*]{8,32}" id="confirm-password" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label"> Email </label>
+                <input type="email" class="form-control" name="email" value="<?php if (isset($_SESSION["submitted-email"])) /* then */ print($_SESSION["submitted-email"]) ?>" id="email" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label"> Phone </label>
+                <input type="tel" class="form-control" name="phone" value="<?php if (isset($_SESSION["submitted-phone"])) /* then */ print($_SESSION["submitted-phone"]) ?>" id="phone" required />
+            </div>
+
+            <div class="mb-4">
+                <label for="birthday" class="form-label"> Birthday </label>
+                <input type="date" class="form-control" name="birthday" value="<?php if (isset($_SESSION["submitted-birthday"])) /* then */ print($_SESSION["submitted-birthday"]) ?>" id="birthday" required />
+            </div>
+
+        <?php if (isset($error_message)) { ?>
+            <div class="mb-4 text-danger">
+                <?php print($error_message); ?>
+            </div>
+        <?php } ?>
+
+            <button type="submit" class="btn btn-primary" name="submit" value="submit"> Sign up </button>
+            <button type="reset" class="btn btn-secondary" name="reset"> Reset </button>
+        </div>
+    </form>
+
+    <?php include_once(__DIR__ . "/../part/script.phtml") ?>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <?php include_once(__DIR__ . "/../part/head.phtml") ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../part/header.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <div class="py-5">
+        <div class="container">
+            <h1 class="mb-5"> Events </h1>
+
+        <?php foreach ($all_events as $event) { ?>
+            <figure class="row border-bottom-1px py-5">
+                <div class="col-lg-3 mb-4">
+                    <img src="<?php print($event->get_image_url()) ?>" />
+                </div>
+                <div class="col-lg-9">
+                    <h2 class="mb-4"> <?php print($event->get_name()) ?> </h2>
+                    <p>
+                        <b> Starting time: </b>
+                        <?php print($event->get_starting_time()) ?>
+                    </p>
+                    <p class="mb-4">
+                        <b> For: </b>
+                        <?php print($event->get_kids_only() ? "Children" : "Everyone") ?>
+                    </p>
+                    <a class="btn btn-primary" href="<?php print($base_url . "/event.php?id=" . $event->get_id()) ?>"> Read more </a>
+                </div>
+            </figure>
+        <?php } // foreach ?>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../part/script.phtml") ?>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?php include_once(__DIR__ . "/../../../../config.php"); ?>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once(__DIR__ . "/../../../part/admin/head.phtml"); ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
+
+    <div class="py-5">
+        <div class="container">
+            <h1 class="mb-5"> Deleted Specie </h1>
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row"> Id </th>
+                        <td> <?php print($specie->get_id()) ?> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Name </th>
+                        <td> <?php print($specie->get_name()) ?> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Description </th>
+                        <td> <?php print($specie->get_description()) ?> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Image URL </th>
+                        <td> <?php print($specie->get_image_url()) ?> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../../../part/admin/script.phtml"); ?>
+</body>
+</html>

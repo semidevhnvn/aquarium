@@ -1,0 +1,51 @@
+<?php include_once(__DIR__ . "/../../../../config.php"); ?>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once(__DIR__ . "/../../../part/admin/head.phtml"); ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
+
+    <form class="py-5" action=<?php print($base_url . "/admin/page/edit-submit.php") ?> method="post">
+        <div class="container mw-360px">
+            <h1 class="mb-5"> Edit Page </h1>
+
+            <input type="hidden" name="id" value="<?php print($page->get_id()) ?>" />
+
+            <div class="mb-3">
+                <label for="menu-name" class="form-label"> Menu name </label>
+                <input type="text" class="form-control" name="menu-name" value="<?php print($page->get_menu_name()) ?>" id="menu-name" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="title" class="form-label"> Title </label>
+                <input type="text" class="form-control" name="title" value="<?php print($page->get_title()) ?>" id="title" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="body-text" class="form-label"> Body text </label>
+                <textarea class="form-control" name="body-text" rows="3" id="body-text" required><?php print($page->get_body_text()) ?></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="order" class="form-label"> Order </label>
+                <input type="number" class="form-control" name="order" step="1" value="<?php print($page->get_order()) ?>" id="order" required />
+            </div>
+
+        <?php if (isset($edit_error)) { ?>
+            <div class="mb-4 text-danger">
+                <?php print($edit_error) ?>
+            </div>
+        <?php } // if ?>
+
+            <button type="submit" class="btn btn-primary" name="submit" value="submit"> Save </button>
+            <button type="reset" class="btn btn-secondary" name="reset"> Reset </button>
+        </div>
+    </form>
+
+    <?php include_once(__DIR__ . "/../../../part/admin/script.phtml"); ?>
+</body>
+</html>

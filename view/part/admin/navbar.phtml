@@ -1,0 +1,38 @@
+<?php include_once(__DIR__ . "/../../../config.php") ?>
+
+
+<nav class="navbar navbar-expand-lg border_bottom_6px">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<?php print($base_url . "/admin") ?>"> DASHBOARD </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/admin/animal") ?>"> ANIMALS </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/admin/specie") ?>"> SPECIES </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/admin/event") ?>"> EVENTS </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/admin/visitor") ?>"> VISITORS </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/admin/attendance") ?>"> ATTENDANCES </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/admin/page") ?>"> PAGES </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/admin/slide") ?>"> SLIDES </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

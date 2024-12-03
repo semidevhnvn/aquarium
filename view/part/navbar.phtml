@@ -1,0 +1,51 @@
+<?php include_once(__DIR__ . "/../../config.php") ?>
+
+
+<nav class="navbar navbar-expand-lg border-bottom-6px">
+    <div class="container">
+        <a class="navbar-brand" href="<?php print($base_url . "/") ?>"> HOME </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/gallery.php") ?>"> GALLERY </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/events.php") ?>"> EVENTS </a>
+                </li>
+            <?php foreach ($all_pages as $one_page) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/page.php?id=" . $one_page->get_id()) ?>"> <?php print($one_page->get_menu_name()) ?> </a>
+                </li>
+            <?php } // foreach ?>
+            </ul>
+
+        <?php if (isset($_SESSION["username"])) { ?>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/account.php") ?>"> <?php print(strtoupper($_SESSION["username"])) ?> </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/attendance.php") ?>"> ATTENDANCE </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/logout.php") ?>"> LOGOUT </a>
+                </li>
+            </ul>
+        <?php } else { ?>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/login.php") ?>"> LOGIN </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php print($base_url . "/signup.php") ?>"> SIGNUP </a>
+                </li>
+            </ul>
+        <?php } // else ?>
+        </div>
+    </div>
+</nav>

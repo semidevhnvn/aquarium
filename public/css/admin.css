@@ -1,0 +1,23 @@
+.mw-360px {
+    max-width: 360px;
+}
+
+.text-danger {
+    color: #BB2D3B;
+}
+
+.border_bottom_6px {
+    border-bottom: 6px solid #1F689E;
+}
+
+.navbar-brand,
+.nav-link {
+    font-weight: bold;
+    color: #BBBBBB;
+}
+
+.nav-link.active,
+.nav-link:hover,
+.navbar-brand:hover {
+    color: #1F689E !important;
+}

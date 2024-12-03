@@ -1,0 +1,51 @@
+<?php include_once(__DIR__ . "/../../../../config.php"); ?>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once(__DIR__ . "/../../../part/admin/head.phtml"); ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
+
+    <form class="py-5" action=<?php print($base_url . "/admin/animal/edit-submit.php") ?> method="post">
+        <div class="container mw-360px">
+            <h1 class="mb-5"> Edit Animal </h1>
+
+            <input type="hidden" name="id" value="<?php print($animal->get_id()) ?>">
+
+            <div class="mb-3">
+                <label for="name" class="form-label"> Specie </label>
+                <select class="form-select" aria-label="specie-id" name="specie-id">
+                <?php foreach ($all_species as $specie) { ?>
+                    <option value="<?php print($specie->get_id()) ?>" <?php if ($specie->get_id() == $animal->get_id()) /* then */ print("selected") ?>>
+                        <?php print($specie->get_name()) ?>
+                    </option>
+                <?php } // foreach ?>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="name" class="form-label"> Name </label>
+                <input type="text" class="form-control" name="name" value="<?php print($animal->get_name()) ?>" id="name" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label"> Description </label>
+                <textarea class="form-control" name="description" rows="3" id="description" required><?php print($animal->get_description()) ?></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="image-url" class="form-label"> Image URL </label>
+                <input type="text" class="form-control" name="image-url" value="<?php print($animal->get_image_url()) ?>" id="image-url" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary" name="submit" value="submit"> Save </button>
+            <button type="reset" class="btn btn-secondary" name="reset"> Reset </button>
+        </div>
+    </form>
+
+    <?php include_once(__DIR__ . "/../../../part/admin/script.phtml"); ?>
+</body>
+</html>

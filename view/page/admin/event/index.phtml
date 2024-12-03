@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once(__DIR__ . "/../../../part/admin/head.phtml"); ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
+
+    <div class="py-5">
+        <div class="container">
+            <h1 class="mb-5"> Event Index </h1>
+
+            <a class="btn btn-primary mb-3" href="<?php print($base_url . "/admin/event/add.php") ?>"> Add Event </a>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> Id </th>
+                        <th scope="col"> For </th>
+                        <th scope="col"> Name </th>
+                        <th scope="col"> Image URL </th>
+                        <th scope="col"> Starting time </th>
+                        <th scope="col"> Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($all_events as $event) { ?>
+                    <tr>
+                        <th scope="row"> <?php print($event->get_id()) ?> </th>
+                        <td> <?php print(($event->get_kids_only()) ? "Children" : "Everyone") ?> </td>
+                        <td> <?php print($event->get_name()) ?> </td>
+                        <td>
+                            <a class="text-decoration-none" href="<?php print($event->get_image_url()) ?>" target="_blank"> <?php print($event->get_image_url()) ?> </a>
+                        </td>
+                        <td> <?php print($event->get_starting_time()) ?> </td>
+                        <td>
+                            <a class="text-decoration-none" href="<?php print($base_url . "/event.php?id=" . $event->get_id()) ?>" target="_blank"> View </a>
+                            &nbsp; | &nbsp
+                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/event/edit.php?id=" . $event->get_id()) ?>"> Edit </a>
+                            &nbsp; | &nbsp
+                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/event/delete.php?id=" . $event->get_id()) ?>"> Delete </a>
+                        </td>
+                    </tr>
+                <?php } // foreach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../../../part/admin/script.phtml"); ?>
+</body>
+</html>

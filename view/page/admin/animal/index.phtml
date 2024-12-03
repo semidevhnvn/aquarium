@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once(__DIR__ . "/../../../part/admin/head.phtml"); ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
+
+    <div class="py-5">
+        <div class="container">
+            <h1 class="mb-5"> Animal Index </h1>
+
+            <a class="btn btn-primary mb-3" href="<?php print($base_url . "/admin/animal/add.php") ?>"> Add Animal </a>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> Id </th>
+                        <th scope="col"> Name </th>
+                        <th scope="col"> Specie </th>
+                        <th scope="col"> Description </th>
+                        <th scope="col"> Image URL </th>
+                        <th scope="col"> Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($all_animals_joined as $animal_joined) { ?>
+                    <tr>
+                        <th scope="row"> <?php print($animal_joined->animal->get_id()) ?> </th>
+                        <td> <?php print($animal_joined->animal->get_name()) ?> </td>
+                        <td> <?php print($animal_joined->specie->get_name()) ?> </td>
+                        <td> <?php print(substr($animal_joined->animal->get_description(), 0, 32) . "...") ?> </td>
+                        <td>
+                            <a class="text-decoration-none" href="<?php print($animal_joined->animal->get_image_url()) ?>" target="_blank"> <?php print($animal_joined->animal->get_image_url()) ?> </a>
+                        </td>
+                        <td>
+                            <a class="text-decoration-none" href="<?php print($base_url . "/animal?id=" . $animal_joined->animal->get_id()) ?>" target="_blank"> View </a>
+                            &nbsp; | &nbsp
+                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/animal/edit.php?id=" . $animal_joined->animal->get_id()) ?>"> Edit </a>
+                            &nbsp; | &nbsp
+                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/animal/delete.php?id=" . $animal_joined->animal->get_id()) ?>"> Delete </a>
+                        </td>
+                    </tr>
+                <?php } // foreach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../../../part/admin/script.phtml"); ?>
+</body>
+</html>
