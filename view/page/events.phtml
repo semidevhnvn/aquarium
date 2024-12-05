@@ -13,10 +13,10 @@
 
         <?php foreach ($all_events as $event) { ?>
             <figure class="row border-bottom-1px py-5">
-                <div class="col-lg-3 mb-4">
-                    <img src="<?php print($event->get_image_url()) ?>" />
+                <div class="col-lg-3 col-md-5 mb-4">
+                    <img class="img-fluid w-100" src="<?php print($event->get_image_url()) ?>" />
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-9 col-md-7">
                     <h2 class="mb-4"> <?php print($event->get_name()) ?> </h2>
                     <p>
                         <b> Starting time: </b>

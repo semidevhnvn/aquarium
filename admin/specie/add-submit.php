@@ -12,8 +12,9 @@ $id = $id ? ($id + 1) : 1;
 $name        = $_POST["name"];
 $description = $_POST["description"];
 $image_url   = $_POST["image-url"];
+$featured    = (bool) $_POST["featured"];
 
-$specie = new specie($id, $name, $description, $image_url);
+$specie = new specie($id, $name, $description, $image_url, $featured);
 database::insert_into_specie($specie);
 
 header("location: " . $base_url . "/admin/specie");

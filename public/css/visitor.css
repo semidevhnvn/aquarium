@@ -52,3 +52,60 @@
 .navbar-brand:hover {
     color: #1F689E !important;
 }
+
+.nav-link {
+    text-transform: uppercase;
+}
+
+.btn-light {
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+}
+
+.btn-light.current {
+    background-color: #1F689E;
+    border: none;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #1F689E;
+}
+
+.display {
+    position: relative;
+}
+
+.display .caption {
+    padding: 30px 50px;
+    max-width: 810px;
+    position: absolute;
+    bottom: 30%;
+    color: white;
+}
+
+@media (max-width: 992px)
+{
+    .display .caption {
+        position: static;
+        color: black;
+    }
+}
+
+.featured {
+    background-color: whitesmoke;
+}
+
+.text-black {
+    color: black;
+}
+
+.bg-primary {
+    background-color: #1F689E;
+}
+
+.sticker {
+    position: fixed;
+    right: 18px;
+    bottom: 15px;
+}

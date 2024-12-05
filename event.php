@@ -3,6 +3,8 @@
 include_once(__DIR__ . "/model/database.php");
 
 
+session_start();
+
 $title = "Event";
 $all_pages = database::select_all_page_order_by_order();
 $id = (int) $_GET["id"];

@@ -7,19 +7,23 @@ class page
     private string $title;
     private string $body_text;
     private int    $order;
+    private string $slug;
 
     public function __construct (
         int    $id,
         string $menu_name,
         string $title,
         string $body_text,
-        int    $order
+        int    $order,
+        string $slug
     ) {
         $this->set_id($id);
         $this->set_menu_name($menu_name);
         $this->set_title($title);
         $this->set_body_text($body_text);
-        $this->set_order($order);    }
+        $this->set_order($order);
+        $this->set_slug($slug);
+    }
 
     public function get_id () : int
     {
@@ -84,6 +88,19 @@ class page
             throw new Exception("Invalid page order");
         else
             $this->order = $order;
+    }
+
+    public function get_slug () : string
+    {
+        return $this->slug;
+    }
+
+    public function set_slug (string $slug) : void
+    {
+        if (empty($slug))
+            throw new Exception("Slug cannot be empty");
+        else
+            $this->slug = $slug;
     }
 }
 

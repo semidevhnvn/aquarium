@@ -30,7 +30,7 @@
                         <td> <?php print($page->get_title()) ?> </td>
                         <td> <?php print($page->get_order()) ?> </td>
                         <td>
-                            <a class="text-decoration-none" href="<?php print($base_url . "/page.php?id=" . $page->get_id()) ?>" target="_blank"> View </a>
+                            <a class="text-decoration-none" href="<?php print($base_url . "/page.php?slug=" . $page->get_slug()) ?>" target="_blank"> View </a>
                             &nbsp; | &nbsp
                             <a class="text-decoration-none" href="<?php print($base_url . "/admin/page/edit.php?id=" . $page->get_id()) ?>"> Edit </a>
                             &nbsp; | &nbsp

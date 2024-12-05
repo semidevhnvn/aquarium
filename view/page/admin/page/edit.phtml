@@ -27,12 +27,17 @@
 
             <div class="mb-3">
                 <label for="body-text" class="form-label"> Body text </label>
-                <textarea class="form-control" name="body-text" rows="3" id="body-text" required><?php print($page->get_body_text()) ?></textarea>
+                <textarea class="form-control" name="body-text" rows="6" id="body-text" required><?php print($page->get_body_text()) ?></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="order" class="form-label"> Order </label>
+                <input type="number" class="form-control" name="order" step="1" value="<?php print($page->get_order()) ?>" id="order" required />
             </div>
 
             <div class="mb-4">
-                <label for="order" class="form-label"> Order </label>
-                <input type="number" class="form-control" name="order" step="1" value="<?php print($page->get_order()) ?>" id="order" required />
+                <label for="slug" class="form-label"> Slug </label>
+                <input type="text" class="form-control" name="slug" value="<?php print($page->get_slug()) ?>" id="slug" required />
             </div>
 
         <?php if (isset($edit_error)) { ?>

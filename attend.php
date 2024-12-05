@@ -9,7 +9,7 @@ include_once(__DIR__ . "/login.php");
 
 $event_id = (int) $_GET["event-id"];
 
-$username = $_SESSION["username"];
+$username = $_SESSION["visitor_username"];
 $visitor = database::select_visitor_by_username($username);
 
 $all_attendances_joined = database::select_attendance_join_event_by_visitor_id($visitor->get_id());

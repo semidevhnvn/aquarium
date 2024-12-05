@@ -25,12 +25,17 @@
 
             <div class="mb-3">
                 <label for="body-text" class="form-label"> Body text </label>
-                <textarea class="form-control" name="body-text" rows="3" id="body-text" required><?php if(isset($_SESSION["submitted-body-text"])) /* then */ print($_SESSION["submitted-body-text"]) ?></textarea>
+                <textarea class="form-control" name="body-text" rows="6" id="body-text" required><?php if(isset($_SESSION["submitted-body-text"])) /* then */ print($_SESSION["submitted-body-text"]) ?></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="order" class="form-label"> Order </label>
+                <input type="number" class="form-control" name="order" step="1" value="<?php if(isset($_SESSION["submitted-order"])) /* then */ print($_SESSION["submitted-order"]) ?>" id="order" required />
             </div>
 
             <div class="mb-4">
-                <label for="order" class="form-label"> Order </label>
-                <input type="number" class="form-control" name="order" step="1" value="<?php if(isset($_SESSION["submitted-order"])) /* then */ print($_SESSION["submitted-order"]) ?>" id="order" required />
+                <label for="slug" class="form-label"> Slug </label>
+                <input type="text" class="form-control" name="slug" value="<?php if(isset($_SESSION["submitted-slug"])) /* then */ print($_SESSION["submitted-slug"]) ?>" id="slug" required />
             </div>
 
         <?php if (isset($add_error)) { ?>

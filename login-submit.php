@@ -22,7 +22,7 @@ else if (! password_verify($password, $matched_username_account->get_password())
 
 else {
     if (isset($_SESSION["login_error"])) /* then */ unset($_SESSION["login_error"]);
-    $_SESSION["username"] = $matched_username_account->get_username();
+    $_SESSION["visitor_username"] = $matched_username_account->get_username();
     header("location: " . $base_url);
 }
 

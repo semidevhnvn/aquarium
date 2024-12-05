@@ -12,25 +12,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php print($base_url . "/gallery.php") ?>"> GALLERY </a>
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "gallery") || str_contains($_SERVER["REQUEST_URI"], "animal")) /* then */ print("active") ?>" href="<?php print($base_url . "/gallery.php?specie-name=all") ?>"> GALLERY </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php print($base_url . "/events.php") ?>"> EVENTS </a>
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "event")) /* then */ print("active") ?>" href="<?php print($base_url . "/events.php") ?>"> EVENTS </a>
                 </li>
             <?php foreach ($all_pages as $one_page) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php print($base_url . "/page.php?id=" . $one_page->get_id()) ?>"> <?php print($one_page->get_menu_name()) ?> </a>
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], $one_page->get_slug())) /* then */ print("active") ?>" href="<?php print($base_url . "/page.php?slug=" . $one_page->get_slug()) ?>"> <?php print($one_page->get_menu_name()) ?> </a>
                 </li>
             <?php } // foreach ?>
             </ul>
 
-        <?php if (isset($_SESSION["username"])) { ?>
+        <?php if (isset($_SESSION["visitor_username"])) { ?>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php print($base_url . "/account.php") ?>"> <?php print(strtoupper($_SESSION["username"])) ?> </a>
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "account")) /* then */ print("active") ?>" href="<?php print($base_url . "/account.php") ?>"> <?php print(strtoupper($_SESSION["visitor_username"])) ?> </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php print($base_url . "/attendance.php") ?>"> ATTENDANCE </a>
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "attendance")) /* then */ print("active") ?>" href="<?php print($base_url . "/attendance.php") ?>"> ATTENDANCE </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php print($base_url . "/logout.php") ?>"> LOGOUT </a>
@@ -39,10 +39,10 @@
         <?php } else { ?>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php print($base_url . "/login.php") ?>"> LOGIN </a>
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "login")) /* then */ print("active") ?>" href="<?php print($base_url . "/login.php") ?>"> LOGIN </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php print($base_url . "/signup.php") ?>"> SIGNUP </a>
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "signup")) /* then */ print("active") ?>" href="<?php print($base_url . "/signup.php") ?>"> SIGNUP </a>
                 </li>
             </ul>
         <?php } // else ?>

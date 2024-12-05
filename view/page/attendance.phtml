@@ -24,7 +24,7 @@
                 <?php foreach ($all_attendances_joined as $attendance_joined) { ?>
                     <tr>
                         <td>
-                            <a href="<?php print($base_url . "/event.php?id=" . $attendance_joined->event->get_id()) ?>" target="_blank">
+                            <a class="text-decoration-none" href="<?php print($base_url . "/event.php?id=" . $attendance_joined->event->get_id()) ?>" target="_blank">
                                 <?php print($attendance_joined->event->get_name()) ?>
                             </a>
                         </td>

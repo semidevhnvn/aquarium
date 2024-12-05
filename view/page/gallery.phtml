@@ -1,0 +1,43 @@
+<?php include_once(__DIR__ . "/../../config.php") ?>
+
+
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <?php include_once(__DIR__ . "/../part/head.phtml") ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../part/header.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <main class="py-5">
+        <div class="container">
+            <div class="mb-5">
+                <a class="btn btn-light <?php if ($specie_name == "all") /* then */ print("current") ?>" href="<?php print($base_url . "/gallery.php?specie-name=all") ?>"> All </a>
+            <?php foreach ($all_species as $one_specie) { ?>
+                <a class="btn btn-light <?php if (strcasecmp($specie_name, $one_specie->get_name()) == 0) /* then */ print("current") ?>" href="<?php print($base_url . "/gallery.php?specie-name=" . strtolower($one_specie->get_name())) ?>">
+                    <?php print($one_specie->get_name()) ?>
+                </a>
+            <?php } // foreach ?>
+            </div>
+
+            <h1 class="mb-5"> <?php print(($specie_name == "all") ? "All animals" : $specie->get_name()) ?> </h1>
+
+            <div class="row">
+            <?php foreach ($selected_animals as $animal) { ?>
+                <figure class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                    <img class="img-fluid w-100" src="<?php print($animal->get_image_url()) ?>" />
+
+                    <figcaption>
+                        <p class="fs-4 mt-3"> <?php print($animal->get_name()) ?> </p>
+                        <a class="btn btn-primary" href="<?php print($base_url . "/animal.php?id=" . $animal->get_id()) ?>"> See info </a>
+                    </figcaption>
+                </figure>
+            <?php } // foreach ?>
+            </div>
+        </div>
+    </main>
+
+    <?php include_once(__DIR__ . "/../part/script.phtml") ?>
+</body>
+</html>

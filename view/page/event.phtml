@@ -10,15 +10,19 @@
     <div class="py-5">
         <div class="container mw-720px">
             <h1 class="mb-5"> <?php print($event->get_name()) ?> </h1>
-            <img class="d-block mb-4" src="<?php print($event->get_image_url()) ?>" />
+
+            <img class="img-fluid w-100 d-block mb-4" src="<?php print($event->get_image_url()) ?>" />
+
             <p>
                 <b> Staring time: </b>
                 <?php print($event->get_starting_time()) ?>
             </p>
+
             <p>
                 <b> For: </b>
                 <?php print($event->get_kids_only() ? "Children" : "Everyone") ?>
             </p>
+
             <div class="mb-4">
                 <?php print($event->get_description()) ?>
             </div>

@@ -21,3 +21,19 @@
 .navbar-brand:hover {
     color: #1F689E !important;
 }
+
+.nav-link {
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: #1F689E;
+}
+
+.fs-0 {
+    font-size: 45px;
+}
+
+.fs-6 {
+    font-size: 18px;
+}

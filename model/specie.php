@@ -6,17 +6,20 @@ class specie
     private string $name;
     private string $description;
     private string $image_url;
+    private bool   $featured;
 
     public function __construct (
         int    $id,
         string $name,
         string $description,
-        string $image_url
+        string $image_url,
+        bool   $featured
     ) {
         $this->set_id($id);
         $this->set_name($name);
         $this->set_description($description);
         $this->set_image_url($image_url);
+        $this->set_featured($featured);
     }
 
     public function get_id () : int
@@ -69,6 +72,16 @@ class specie
             throw new Exception("Image cannot be empty");
         else
             $this->image_url = $image_url;
+    }
+
+    public function get_featured () : bool
+    {
+        return $this->featured;
+    }
+
+    public function set_featured (bool $featured) : void
+    {
+        $this->featured = $featured;
     }
 }
 

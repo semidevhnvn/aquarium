@@ -1,5 +1,8 @@
 <?php
 
+include_once(__DIR__ . "/model/database.php");
+
+
 session_start();
 
 $title = "Sign Up";

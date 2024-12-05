@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <?php include_once(__DIR__ . "/../part/head.phtml") ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../part/header.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <article class="py-5">
+        <div class="container mw-720px">
+            <h1 class="mb-5"> <?php print($animal->get_name()) ?> </h1>
+
+            <figure class="d-block text-center mb-5">
+                <img class="img-fluid w-100" src="<?php print($animal->get_image_url()) ?>" />
+            </figure>
+
+            <?php print($animal->get_description()) ?>
+        </div>
+    </article>
+
+    <?php include_once(__DIR__ . "/../part/script.phtml") ?>
+</body>
+</html>

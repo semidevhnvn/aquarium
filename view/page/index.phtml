@@ -1,3 +1,6 @@
+<?php include_once(__DIR__ . "/../../config.php") ?>
+
+
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
@@ -6,6 +9,79 @@
 <body>
     <?php include_once(__DIR__ . "/../part/header.phtml") ?>
     <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <div class="display py-5">
+        <div class="container">
+            <video autoplay loop muted playsinline style="width:100%;height:auto">
+                <source src="<?php print($base_url . "/public/mp4/featured-scene.mp4") ?>" type="video/mp4" />
+            </video>
+
+            <div class="caption container">
+                <h1 class="mb-4 fs-0"> Welcome to Jenkinson's Aquarium </h1>
+                <p class="mb-5 fs-6"> Jenkinson's Aquarium is a privately owned facility located on the boardwalk in Point Pleasant Beach, NJ.  Since June of 1991, the aquarium has been dedicated to educating the public on all aspects of marine life and conservation. </p>
+                <a class="btn btn-primary" href="#"> Find out more </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="featured py-5">
+        <div class="container">
+            <h2 class="mb-5"> Featured Species </h2>
+
+            <div class="row">
+            <?php foreach ($featured_species as $specie) { ?>
+                <figure class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                    <img class="img-fluid w-100" src="<?php print($specie->get_image_url()) ?>" />
+
+                    <figcaption>
+                        <p class="fs-4 mt-3"> <?php print($specie->get_name()) ?> </p>
+                        <a class="btn btn-primary" href="<?php print($base_url . "/gallery.php?specie-name=" . strtolower($specie->get_name())) ?>"> See info </a>
+                    </figcaption>
+                </figure>
+            <?php } // foreach ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-5">
+        <div class="container">
+            <h2 class="mb-5"> Upcoming Events </h2>
+
+            <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+
+            <div class="carousel-inner">
+            <?php $i = 0; foreach ($upcoming_events as $event) { ?>
+                <div class="carousel-item <?php print($i == 0 ? "active" : ""); $i += 1 ?>">
+                    <div class="row">
+                        <div class="col-xs-1 col-md-1 col-lg-2"></div>
+                        <div class="col-xs-5 col-md-4 col-lg-3">
+                            <img class="img-fluid w-100" src="<?php print($event->get_image_url()) ?>" />
+                        </div>
+                        <div class="col-xs-1 col-md-1 col-lg-1"></div>
+                        <div class="col-xs-5 col-md-6 col-lg-6 mt-3 mt-md-5">
+                            <h3 class="text-black"> <?php print($event->get_name()) ?> </h5>
+                            <p> <b> For: </b> <?php print($event->get_kids_only() ? "Children" : "Everyone") ?> </p>
+                            <a class="btn btn-primary" href="<?php print($base_url . "/event.php?id=" . $event->get_id()) ?>"> See info </a>
+                        </div>
+                    </div>
+                </div>
+            <?php } // foreach ?>
+            </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../part/footer.phtml") ?>
     <?php include_once(__DIR__ . "/../part/script.phtml") ?>
 </body>
 </html>

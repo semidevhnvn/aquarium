@@ -22,12 +22,24 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label"> Description </label>
-                <textarea class="form-control" name="description" rows="3" id="description" required><?php print($specie->get_description()) ?></textarea>
+                <textarea class="form-control" name="description" rows="6" id="description" required><?php print($specie->get_description()) ?></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="image-url" class="form-label"> Image URL </label>
+                <input type="text" class="form-control" name="image-url" id="image-url" value="<?php print($specie->get_image_url()) ?>" required />
             </div>
 
             <div class="mb-4">
-                <label for="image-url" class="form-label"> Image URL </label>
-                <input type="text" class="form-control" name="image-url" id="image-url" value="<?php print($specie->get_image_url()) ?>" required />
+                <div class="mb-1"> Featured </div>
+
+                <input class="form-check-input" type="radio" name="featured" value="1" id="yes" <?php if ($specie->get_featured()) /* then */ print("checked") ?> />
+                <label class="form-check-label" for="yes"> Yes </label>
+
+                &nbsp; &nbsp; &nbsp;
+
+                <input class="form-check-input" type="radio" name="featured" value="0" id="no" <?php if (! $specie->get_featured()) /* then */ print("checked") ?> />
+                <label class="form-check-label" for="no"> No </label>
             </div>
 
             <button type="submit" class="btn btn-primary" name="submit" value="submit"> Submit </button>

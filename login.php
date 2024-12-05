@@ -1,13 +1,14 @@
 <?php
 
 include_once(__DIR__ . "/config.php");
+include_once(__DIR__ . "/model/database.php");
 
 
 session_start();
 
-$_SESSION["return_url"] = $_SERVER['REQUEST_URI'];
+$_SESSION["return_url"] = $_SERVER["REQUEST_URI"];
 
-if (isset($_SESSION["username"])) {
+if (isset($_SESSION["visitor_username"])) {
     if ($_SESSION["return_url"] == ($base_url . "/login.php")) {
         unset($_SESSION["return_url"]);
         header("location: " . $base_url);
