@@ -11,7 +11,7 @@
         <div class="container">
             <h1 class="mb-5"> Events </h1>
 
-        <?php foreach ($all_events as $event) { ?>
+        <?php foreach ($upcoming_events as $event) { ?>
             <figure class="row border-bottom-1px py-5">
                 <div class="col-lg-3 col-md-5 mb-4">
                     <img class="img-fluid w-100" src="<?php print($event->get_image_url()) ?>" />
@@ -33,6 +33,7 @@
         </div>
     </div>
 
+    <?php include_once(__DIR__ . "/../part/footer.phtml") ?>
     <?php include_once(__DIR__ . "/../part/script.phtml") ?>
 </body>
 </html>

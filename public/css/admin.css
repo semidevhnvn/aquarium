@@ -2,6 +2,10 @@
     max-width: 360px;
 }
 
+.mw-720px {
+    max-width: 720px;
+}
+
 .text-danger {
     color: #BB2D3B;
 }

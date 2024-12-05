@@ -12,6 +12,53 @@
     <div class="py-5">
         <div class="container">
             <h1 class="mb-5"> Admin Dashboard </h1>
+
+            <table class="table mw-720px">
+                <tbody>
+                <tr>
+                    <th scope="row"> Animals </th>
+                    <td> <?php print($animal_count) ?> </td>
+                    <td class="text-end">
+                        <a class="text-decoration-none" href="<?php print($base_url . "/admin/animal") ?>"> See animals </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"> Species </th>
+                    <td> <?php print($specie_count) ?> </td>
+                    <td class="text-end">
+                        <a class="text-decoration-none" href="<?php print($base_url . "/admin/specie") ?>"> See species </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"> Events </th>
+                    <td> <?php print($event_count) ?> </td>
+                    <td class="text-end">
+                        <a class="text-decoration-none" href="<?php print($base_url . "/admin/event") ?>"> See events </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"> Visitors </th>
+                    <td> <?php print($visitor_count) ?> </td>
+                    <td class="text-end">
+                        <a class="text-decoration-none" href="<?php print($base_url . "/admin/visitor") ?>"> See visitors </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"> Attendances </th>
+                    <td> <?php print($attendance_count) ?> </td>
+                    <td class="text-end">
+                        <a class="text-decoration-none" href="<?php print($base_url . "/admin/attendance") ?>"> See attendances </a>
+                    </td>
+                </tr>
+                <tr>
+                <th scope="row">Pages</th>
+                    <td> <?php print($page_count) ?> </td>
+                    <td class="text-end">
+                        <a class="text-decoration-none" href="<?php print($base_url . "/admin/page") ?>"> See pages </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

@@ -60,9 +60,10 @@
                         </div>
                         <div class="col-xs-1 col-md-1 col-lg-1"></div>
                         <div class="col-xs-5 col-md-6 col-lg-6 mt-3 mt-md-5">
-                            <h3 class="text-black"> <?php print($event->get_name()) ?> </h5>
+                            <h3 class="text-black mb-3"> <?php print($event->get_name()) ?> </h5>
+                            <p> <b> Starting time: </b> <?php print($event->get_starting_time()) ?> </p>
                             <p> <b> For: </b> <?php print($event->get_kids_only() ? "Children" : "Everyone") ?> </p>
-                            <a class="btn btn-primary" href="<?php print($base_url . "/event.php?id=" . $event->get_id()) ?>"> See info </a>
+                            <a class="btn btn-primary mt-2" href="<?php print($base_url . "/event.php?id=" . $event->get_id()) ?>"> See info </a>
                         </div>
                     </div>
                 </div>

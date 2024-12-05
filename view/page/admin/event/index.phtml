@@ -15,7 +15,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col"> Id </th>
                         <th scope="col"> For </th>
                         <th scope="col"> Name </th>
                         <th scope="col"> Image URL </th>
@@ -26,7 +25,6 @@
                 <tbody>
                 <?php foreach ($all_events as $event) { ?>
                     <tr>
-                        <th scope="row"> <?php print($event->get_id()) ?> </th>
                         <td> <?php print(($event->get_kids_only()) ? "Children" : "Everyone") ?> </td>
                         <td> <?php print($event->get_name()) ?> </td>
                         <td>
@@ -37,8 +35,6 @@
                             <a class="text-decoration-none" href="<?php print($base_url . "/event.php?id=" . $event->get_id()) ?>" target="_blank"> View </a>
                             &nbsp; | &nbsp
                             <a class="text-decoration-none" href="<?php print($base_url . "/admin/event/edit.php?id=" . $event->get_id()) ?>"> Edit </a>
-                            &nbsp; | &nbsp
-                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/event/delete.php?id=" . $event->get_id()) ?>"> Delete </a>
                         </td>
                     </tr>
                 <?php } // foreach ?>

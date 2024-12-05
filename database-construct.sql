@@ -30,12 +30,12 @@ FOREIGN KEY (specie_id) REFERENCES specie(id);
 
 
 CREATE TABLE `event` (
-    id            INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    kids_only     BOOLEAN     NOT NULL,
+    id            INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    kids_only     BOOLEAN      NOT NULL,
     name          VARCHAR(128) NOT NULL,
-    description   MEDIUMTEXT  NOT NULL,
-    image_url     MEDIUMTEXT  NOT NULL,
-    starting_time DATETIME    NOT NULL
+    description   MEDIUMTEXT   NOT NULL,
+    image_url     MEDIUMTEXT   NOT NULL,
+    starting_time DATETIME     NOT NULL
 );
 
 CREATE TABLE visitor (

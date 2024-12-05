@@ -604,6 +604,37 @@ class database
          return $all_events;
      }
 
+     public static function select_all_event_order_by_id_desc () : array
+     {
+         global $mysqli_connection;
+
+         $sql = "
+             SELECT id, kids_only, name, description, image_url, starting_time
+             FROM event
+             ORDER BY id DESC
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+
+         $all_events = [];
+
+         if (mysqli_num_rows($result_set) > 0) {
+             while ($record = mysqli_fetch_assoc($result_set)) {
+                 $id            = (int) $record["id"];
+                 $kids_only     = (bool) $record["kids_only"];
+                 $name          = stripslashes($record["name"]);
+                 $description   = stripslashes($record["description"]);
+                 $image_url     = stripslashes($record["image_url"]);
+                 $starting_time = stripslashes($record["starting_time"]);
+
+                 $event = new event($id, $kids_only, $name, $description, $image_url, $starting_time);
+                 array_push($all_events, $event);
+             }
+         }
+
+         return $all_events;
+     }
+
      public static function select_upcoming_event (string $datetime) : array
      {
          global $mysqli_connection;
@@ -969,7 +1000,7 @@ class database
          }
      }
 
-     public static function select_attendance_by_visitor_id (int $visitor_id) : array
+     public static function select_attendance_by_visitor_id_order_by_event_id_desc (int $visitor_id) : array
      {
          global $mysqli_connection;
 
@@ -977,6 +1008,7 @@ class database
             SELECT event_id, visitor_id
             FROM attendance
             WHERE visitor_id = {$visitor_id}
+            ORDER BY event_id DESC
          ";
 
          $selected_attendances = [];
@@ -994,9 +1026,9 @@ class database
          return $selected_attendances;
      }
 
-     public static function select_attendance_join_event_by_visitor_id (int $visitor_id) : array
+     public static function select_attendance_join_event_by_visitor_id_order_by_event_id_desc (int $visitor_id) : array
      {
-         $attendaces_matched_visitor_id = database::select_attendance_by_visitor_id($visitor_id);
+         $attendaces_matched_visitor_id = database::select_attendance_by_visitor_id_order_by_event_id_desc($visitor_id);
 
          $all_attendances_joined = [];
 
@@ -1324,6 +1356,102 @@ class database
          }
 
          return $all_pages;
+     }
+
+     public static function select_count_all_animal () : int
+     {
+         global $mysqli_connection;
+
+         $sql = "
+            SELECT count(*) AS animal_count
+            FROM animal
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+         $record = mysqli_fetch_assoc($result_set);
+         $animal_count = (int) $record["animal_count"];
+
+         return $animal_count;
+     }
+
+     public static function select_count_all_specie () : int
+     {
+         global $mysqli_connection;
+
+         $sql = "
+            SELECT count(*) AS specie_count
+            FROM specie
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+         $record = mysqli_fetch_assoc($result_set);
+         $specie_count = (int) $record["specie_count"];
+
+         return $specie_count;
+     }
+
+     public static function select_count_all_event () : int
+     {
+         global $mysqli_connection;
+
+         $sql = "
+            SELECT count(*) AS event_count
+            FROM event
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+         $record = mysqli_fetch_assoc($result_set);
+         $event_count = (int) $record["event_count"];
+
+         return $event_count;
+     }
+
+     public static function select_count_all_visitor () : int
+     {
+         global $mysqli_connection;
+
+         $sql = "
+            SELECT count(*) AS visitor_count
+            FROM visitor
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+         $record = mysqli_fetch_assoc($result_set);
+         $visitor_count = (int) $record["visitor_count"];
+
+         return $visitor_count;
+     }
+
+     public static function select_count_all_attendance () : int
+     {
+         global $mysqli_connection;
+
+         $sql = "
+            SELECT count(*) AS attendance_count
+            FROM attendance
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+         $record = mysqli_fetch_assoc($result_set);
+         $attendance_count = (int) $record["attendance_count"];
+
+         return $attendance_count;
+     }
+
+     public static function select_count_all_page () : int
+     {
+         global $mysqli_connection;
+
+         $sql = "
+            SELECT count(*) AS page_count
+            FROM page
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+         $record = mysqli_fetch_assoc($result_set);
+         $page_count = (int) $record["page_count"];
+
+         return $page_count;
      }
 } // class
 

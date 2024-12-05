@@ -103,9 +103,3 @@
 .bg-primary {
     background-color: #1F689E;
 }
-
-.sticker {
-    position: fixed;
-    right: 18px;
-    bottom: 15px;
-}
