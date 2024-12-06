@@ -11,6 +11,8 @@ include_once(__DIR__ . "/attendance.php");
 include_once(__DIR__ . "/attendance_join_event.php");
 include_once(__DIR__ . "/attendance_join_event_join_visitor.php");
 include_once(__DIR__ . "/page.php");
+include_once(__DIR__ . "/review.php");
+include_once(__DIR__ . "/review_join_visitor.php");
 
 
 
@@ -1452,6 +1454,100 @@ class database
          $page_count = (int) $record["page_count"];
 
          return $page_count;
+     }
+
+     public static function select_latest_review_id () : ?int
+     {
+         global $mysqli_connection;
+
+         $sql = "
+             SELECT id
+             FROM review
+             ORDER BY id DESC
+             LIMIT 1;
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+
+         if (mysqli_num_rows($result_set) > 0) {
+             $record = mysqli_fetch_assoc($result_set);
+             $id = (int) $record["id"];
+             return $id;
+         }
+         else {
+             return null;
+         }
+     }
+
+     public static function insert_into_review (review $review) : void
+     {
+         global $mysqli_connection;
+
+         $feedback = $mysqli_connection->real_escape_string($review->get_feedback());
+
+         $sql = "
+             INSERT INTO review (id, visitor_id, rating, feedback, submit_time)
+             VALUES ( {$review->get_id()}
+                    , {$review->get_visitor_id()}
+                    , {$review->get_rating()}
+                    , '{$feedback}'
+                    , '{$review->get_submit_time()}'
+                    )
+         ";
+
+         if ($mysqli_connection->query($sql)) {
+             /* do nothing */;
+         }
+         else {
+             throw new Exception("Insertion failed");
+         }
+     }
+
+     public static function select_all_review_order_by_submit_time_desc () : array
+     {
+         global $mysqli_connection;
+
+         $sql = "
+             SELECT id, visitor_id, rating, feedback, submit_time
+             FROM review
+             ORDER BY submit_time DESC
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+
+         $all_reviews = [];
+
+         if (mysqli_num_rows($result_set) > 0) {
+             while ($record = mysqli_fetch_assoc($result_set)) {
+                 $id          = (int) $record["id"];
+                 $visitor_id  = (int) $record["visitor_id"];
+                 $rating      = (int) $record["rating"];
+                 $feedback    = stripslashes($record["feedback"]);
+                 $submit_time = $record["submit_time"];
+
+                 $review = new review($id, $visitor_id, $rating, $feedback, $submit_time);
+                 array_push($all_reviews, $review);
+             }
+         }
+
+         return $all_reviews;
+     }
+
+     public static function select_all_review_join_visitor_order_by_submit_time_desc () : array
+     {
+         global $mysqli_connection;
+
+         $all_reviews = database::select_all_review_order_by_submit_time_desc();
+
+         $all_reviews_joined = [];
+
+         foreach ($all_reviews as $review) {
+             $visitor = database::select_visitor_by_id($review->get_visitor_id());
+             $review_joined = new review_join_visitor($review, $visitor);
+             array_push($all_reviews_joined, $review_joined);
+         }
+
+         return $all_reviews_joined;
      }
 } // class
 

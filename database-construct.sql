@@ -25,7 +25,7 @@ CREATE TABLE specie (
 );
 
 ALTER TABLE animal
-ADD CONSTRAINT fk_specie
+ADD CONSTRAINT fk_animal_specie
 FOREIGN KEY (specie_id) REFERENCES specie(id);
 
 
@@ -58,11 +58,24 @@ ADD CONSTRAINT pk_attendance
 PRIMARY KEY (event_id, visitor_id);
 
 ALTER TABLE attendance
-ADD CONSTRAINT fk_event
+ADD CONSTRAINT fk_attendance_event
 FOREIGN KEY (event_id) REFERENCES event(id);
 
 ALTER TABLE attendance
-ADD CONSTRAINT fk_visitor
+ADD CONSTRAINT fk_attendance_visitor
+FOREIGN KEY (visitor_id) REFERENCES visitor(id);
+
+
+CREATE TABLE review (
+    id          INT        NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    visitor_id  INT        NOT NULL,
+    rating      INT        NOT NULL,
+    feedback    MEDIUMTEXT NOT NULL,
+    submit_time DATETIME   NOT NULL
+);
+
+ALTER TABLE review
+ADD CONSTRAINT fk_review_visitor
 FOREIGN KEY (visitor_id) REFERENCES visitor(id);
 
 

@@ -1,0 +1,33 @@
+<?php include_once(__DIR__ . "/../../config.php") ?>
+
+
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <?php include_once(__DIR__ . "/../part/head.phtml") ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../part/header.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <main class="reviews py-5">
+        <div class="container mw-720px">
+            <div class="text-center mb-5">
+                <a class="btn btn-primary" href="<?php print($base_url . "/review-add.php") ?>"> Submit Your Review </a>
+            </div>
+
+        <?php foreach ($all_reviews_joined as $review_joined) { ?>
+            <section class="border py-3 px-4 mb-3">
+                <p class="fs-4"> <b> <?php print($review_joined->visitor->get_fullname()) ?> </b> </p>
+                <p> <b> Rating: </b> <?php print($review_joined->review->get_rating()) ?>/10 </p>
+                <p> "<?php print($review_joined->review->get_feedback()) ?>" </p>
+                <time> <?php print($review_joined->review->get_submit_time()) ?> </time>
+            </section>
+        <?php } // foreach ?>
+        </div>
+    </main>
+
+    <?php include_once(__DIR__ . "/../part/footer.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/script.phtml") ?>
+</body>
+</html>

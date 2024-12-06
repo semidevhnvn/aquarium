@@ -17,6 +17,9 @@
                 <li class="nav-item">
                     <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "event")) /* then */ print("active") ?>" href="<?php print($base_url . "/events.php") ?>"> EVENTS </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "reviews")) /* then */ print("active") ?>" href="<?php print($base_url . "/reviews.php") ?>"> REVIEWS </a>
+                </li>
             <?php foreach ($all_pages as $one_page) { ?>
                 <li class="nav-item">
                     <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], $one_page->get_slug())) /* then */ print("active") ?>" href="<?php print($base_url . "/page.php?slug=" . $one_page->get_slug()) ?>"> <?php print($one_page->get_menu_name()) ?> </a>

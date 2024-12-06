@@ -1,0 +1,47 @@
+<?php include_once(__DIR__ . "/../../config.php") ?>
+
+
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <?php include_once(__DIR__ . "/../part/head.phtml") ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../part/header.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/navbar.phtml") ?>
+
+    <form class="py-5" action="<?php print($base_url . "/review-add-submit.php") ?>" method="post">
+        <div class="container mw-360px">
+            <h1 class="mb-5"> Your Review </h1>
+
+            <div class="mb-3">
+                <label class="form-label" for="rating"> Rating </label>
+                <select class="form-control" name="rating">
+                    <option value="1"> 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                    <option value="4"> 4 </option>
+                    <option value="5"> 5 </option>
+                    <option value="6"> 6 </option>
+                    <option value="7"> 7 </option>
+                    <option value="8"> 8 </option>
+                    <option value="9"> 9 </option>
+                    <option value="10" selected> 10 </option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label" for="feedback"> Feedback </label>
+                <textarea class="form-control" name="feedback" rows="6" id="feedback"></textarea>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary" name="submit" value="submit"> Submit </button>
+            <button type="reset" class="btn btn-secondary" name="reset"> Reset </button>
+        </div>
+    </form>
+
+    <?php include_once(__DIR__ . "/../part/footer.phtml") ?>
+    <?php include_once(__DIR__ . "/../part/script.phtml") ?>
+</body>
+</html>
