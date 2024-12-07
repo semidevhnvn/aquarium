@@ -82,6 +82,24 @@
         </div>
     </div>
 
+    <div class="py-5 reviews">
+        <div class="container">
+            <h2 class="mb-5"> Latest Reviews </h2>
+
+            <div class="row px-3">
+            <?php foreach ($latest_reviews_joined as $review_joined) { ?>
+                <div class="col-xs-1 col-lg-1"></div>
+                <div class="col-xs-10 col-lg-4 p-4 pb-2 mb-5 bg-white">
+                    <h5 class="mb-3"> <?php print($review_joined->visitor->get_fullname()) ?> </h3>
+                    <p> "<?php print($review_joined->review->get_feedback()) ?>" </p>
+                    <p> <?php print($review_joined->review->get_submit_time()) ?> </p>
+                </div>
+                <div class="col-xs-1 col-lg-1"></div>
+            <?php } // foreach ?>
+            </div>
+        </div>
+    </div>
+
     <?php include_once(__DIR__ . "/../part/footer.phtml") ?>
     <?php include_once(__DIR__ . "/../part/script.phtml") ?>
 </body>

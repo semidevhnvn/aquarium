@@ -90,7 +90,8 @@
     }
 }
 
-.featured {
+.featured,
+.reviews {
     background-color: whitesmoke;
 }
 
@@ -100,4 +101,8 @@
 
 .bg-primary {
     background-color: #1F689E;
+}
+
+.bg-white {
+    background-color: white;
 }

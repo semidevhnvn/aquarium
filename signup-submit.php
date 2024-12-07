@@ -43,6 +43,13 @@ if ($password != $confirm_password) {
 $visitor = new visitor($id, $fullname, $username, $password, $email, $phone, $birthday);
 database::insert_into_visitor($visitor);
 
+if (isset($_SESSION["submitted-fullname"])) /* then */ unset($_SESSION["submitted-fullname"]);
+if (isset($_SESSION["submitted-username"])) /* then */ unset($_SESSION["submitted-username"]);
+if (isset($_SESSION["submitted-password"])) /* then */ unset($_SESSION["submitted-password"]);
+if (isset($_SESSION["submitted-confirm-password"])) /* then */ unset($_SESSION["submitted-confirm-password"]);
+if (isset($_SESSION["submitted-email"])) /* then */ unset($_SESSION["submitted-email"]);
+if (isset($_SESSION["submitted-phone"])) /* then */ unset($_SESSION["submitted-phone"]);
+if (isset($_SESSION["submitted-birthday"])) /* then */ unset($_SESSION["submitted-birthday"]);
 header("location: " . $base_url . "/signup-success.php");
 
 ?>

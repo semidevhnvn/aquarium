@@ -12,9 +12,10 @@ $event_id = (int) $_GET["event-id"];
 $username = $_SESSION["visitor_username"];
 $visitor = database::select_visitor_by_username($username);
 
-$all_attendances_joined = database::select_attendance_by_visitor_id_order_by_event_id_desc($visitor->get_id());
-foreach ($all_attendances_joined as $attendance_joined) {
-    if ($attendance_joined->attendance->get_event_id() == $event_id) {
+$selected_attendances = database::select_attendance_by_visitor_id_order_by_event_id_desc($visitor->get_id());
+
+foreach ($selected_attendances as $attendance) {
+    if ($attendance->get_event_id() == $event_id) {
         header("location: " . $base_url . "/attendance.php");
         exit();
     }
