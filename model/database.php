@@ -1440,6 +1440,22 @@ class database
          return $attendance_count;
      }
 
+     public static function select_count_all_review () : int
+     {
+         global $mysqli_connection;
+
+         $sql = "
+            SELECT count(*) AS review_count
+            FROM review
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+         $record = mysqli_fetch_assoc($result_set);
+         $review_count = (int) $record["review_count"];
+
+         return $review_count;
+     }
+
      public static function select_count_all_page () : int
      {
          global $mysqli_connection;
@@ -1548,6 +1564,63 @@ class database
          }
 
          return $all_reviews_joined;
+     }
+
+     public static function select_review_join_visitor_by_review_id (int $review_id) : review_join_visitor
+     {
+         global $mysqli_connection;
+
+         $review = database::select_review_by_id($review_id);
+         $visitor = database::select_visitor_by_id($review->get_visitor_id());
+         $review_joined = new review_join_visitor($review, $visitor);
+
+         return $review_joined;
+     }
+
+     public static function select_review_by_id (int $id) : ?review
+     {
+         global $mysqli_connection;
+
+         $sql = "
+            SELECT id, visitor_id, rating, feedback, submit_time
+            FROM review
+            WHERE id = {$id}
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+
+         if (mysqli_num_rows($result_set) > 0) {
+             $record = mysqli_fetch_assoc($result_set);
+
+             $id          = (int) $record["id"];
+             $visitor_id  = (int) $record["visitor_id"];
+             $rating      = (int) $record["rating"];
+             $feedback    = stripslashes($record["feedback"]);
+             $submit_time = $record["submit_time"];
+
+             $review = new review($id, $visitor_id, $rating, $feedback, $submit_time);
+             return $review;
+         }
+         else {
+             return null;
+         }
+     }
+
+     public static function delete_from_review (review $review) : void
+     {
+         global $mysqli_connection;
+
+         $sql = "
+             DELETE FROM review
+             WHERE id = {$review->get_id()}
+         ";
+
+         if ($mysqli_connection->query($sql)) {
+             /* do nothing */;
+         }
+         else {
+             throw new Exception("Deletion failed");
+         }
      }
 } // class
 

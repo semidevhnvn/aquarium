@@ -11,25 +11,29 @@
 
     <div class="py-5">
         <div class="container">
-            <h1 class="mb-5"> Deleted Specie </h1>
+            <h1 class="mb-5"> Deleted Review </h1>
 
             <table class="table mw-720px">
                 <tbody>
                     <tr>
                         <th scope="row"> Id </th>
-                        <td> <?php print($specie->get_id()) ?> </td>
+                        <td> <?php print($review_joined->review->get_id()) ?> </td>
                     </tr>
                     <tr>
-                        <th scope="row"> Name </th>
-                        <td> <?php print($specie->get_name()) ?> </td>
+                        <th scope="row"> Visitor </th>
+                        <td> <?php print($review_joined->visitor->get_fullname()) ?> </td>
                     </tr>
                     <tr>
-                        <th scope="row"> Description </th>
-                        <td> <?php print($specie->get_description()) ?> </td>
+                        <th scope="row"> Rating </th>
+                        <td> <?php print($review_joined->review->get_rating()) ?>/10 </td>
                     </tr>
                     <tr>
-                        <th scope="row"> Image URL </th>
-                        <td> <?php print($specie->get_image_url()) ?> </td>
+                        <th scope="row"> Feedback </th>
+                        <td> <?php print($review_joined->review->get_feedback()) ?> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Datetime </th>
+                        <td> <?php print($review_joined->review->get_submit_time()) ?> </td>
                     </tr>
                 </tbody>
             </table>

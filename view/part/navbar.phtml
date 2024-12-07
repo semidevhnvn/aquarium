@@ -33,7 +33,7 @@
                     <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "account")) /* then */ print("active") ?>" href="<?php print($base_url . "/account.php") ?>"> <?php print(strtoupper($_SESSION["visitor_username"])) ?> </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "attendance")) /* then */ print("active") ?>" href="<?php print($base_url . "/attendance.php") ?>"> ATTENDANCE </a>
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "attendance")) /* then */ print("active") ?>" href="<?php print($base_url . "/attendance.php") ?>"> ATTENDANCES </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php print($base_url . "/logout.php") ?>"> LOGOUT </a>

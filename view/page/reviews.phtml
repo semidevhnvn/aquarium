@@ -17,7 +17,7 @@
             </div>
 
         <?php foreach ($all_reviews_joined as $review_joined) { ?>
-            <section class="border py-3 px-4 mb-3">
+            <section class="border py-3 px-4 mb-3" id="<?php print($review_joined->review->get_id()) ?>">
                 <p class="fs-4"> <b> <?php print($review_joined->visitor->get_fullname()) ?> </b> </p>
                 <p> <b> Rating: </b> <?php print($review_joined->review->get_rating()) ?>/10 </p>
                 <p> "<?php print($review_joined->review->get_feedback()) ?>" </p>

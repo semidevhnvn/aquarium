@@ -1,0 +1,51 @@
+<?php include_once(__DIR__ . "/../../../../config.php") ?>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once(__DIR__ . "/../../../part/admin/head.phtml"); ?>
+</head>
+<body>
+    <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
+
+    <div class="py-5">
+        <div class="container">
+            <h1 class="mb-5"> Review Index </h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> Id </th>
+                        <th scope="col"> Visitor </th>
+                        <th scope="col"> Rating </th>
+                        <th scope="col"> Feedback </th>
+                        <th scope="col"> Datetime </th>
+                        <th scope="col"> Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($all_reviews_joined as $review_joined) { ?>
+                    <tr>
+                        <td> <?php print($review_joined->review->get_id()) ?> </td>
+                        <td>
+                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/visitor") ?>"> <?php print($review_joined->visitor->get_fullname()) ?> </a>
+                        </td>
+                        <td> <?php print($review_joined->review->get_rating()) ?> </td>
+                        <td> <?php print(substr($review_joined->review->get_feedback(), 0, 32) . "...") ?> </td>
+                        <td> <?php print($review_joined->review->get_submit_time()) ?> </td>
+                        <td>
+                            <a class="text-decoration-none" href="<?php print($base_url . "/reviews.php#" . $review_joined->review->get_id()) ?>" target="_blank"> View </a>
+                            &nbsp; | &nbsp
+                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/review/delete.php?id=" . $review_joined->review->get_id()) ?>"> Delete </a>
+                        </td>
+                    </tr>
+                <?php } // foreach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php include_once(__DIR__ . "/../../../part/admin/script.phtml"); ?>
+</body>
+</html>

@@ -27,6 +27,9 @@
                     <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "attendance")) /* then */ print("active") ?>" href="<?php print($base_url . "/admin/attendance") ?>"> ATTENDANCES </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "review")) /* then */ print("active") ?>" href="<?php print($base_url . "/admin/review") ?>"> REVIEWS </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "page")) /* then */ print("active") ?>" href="<?php print($base_url . "/admin/page") ?>"> PAGES </a>
                 </li>
             </ul>

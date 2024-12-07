@@ -51,7 +51,14 @@
                     </td>
                 </tr>
                 <tr>
-                <th scope="row">Pages</th>
+                    <th scope="row"> Reviews </th>
+                    <td> <?php print($review_count) ?> </td>
+                    <td class="text-end">
+                        <a class="text-decoration-none" href="<?php print($base_url . "/admin/review") ?>"> See reviews </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Pages</th>
                     <td> <?php print($page_count) ?> </td>
                     <td class="text-end">
                         <a class="text-decoration-none" href="<?php print($base_url . "/admin/page") ?>"> See pages </a>
