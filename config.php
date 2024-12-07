@@ -1,6 +1,6 @@
 <?php
 
-$base_url = "/aquarium";
+$base_url = "/jenkinsonaquarium";
 
     /* MySQL config */
 $server   = "localhost";

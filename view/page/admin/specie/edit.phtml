@@ -10,12 +10,12 @@
     <?php include_once(__DIR__ . "/../../../part/admin/navbar.phtml"); ?>
 
     <form class="py-5" action=<?php print($base_url . "/admin/specie/edit-submit.php") ?> method="post">
-        <div class="container mw-360px">
+        <div class="container mw-720px">
             <h1 class="mb-5"> Add Specie </h1>
 
             <input type="hidden" name="id" value="<?php print($specie->get_id()) ?>">
 
-            <div class="mb-3">
+            <div class="mb-3 mw-360px">
                 <label for="name" class="form-label"> Name </label>
                 <input type="text" class="form-control" id="name" name="name" value="<?php print($specie->get_name()) ?>" required />
             </div>
@@ -25,7 +25,7 @@
                 <textarea class="form-control" name="description" rows="6" id="description" required><?php print($specie->get_description()) ?></textarea>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 mw-360px">
                 <label for="image-url" class="form-label"> Image URL </label>
                 <input type="text" class="form-control" name="image-url" id="image-url" value="<?php print($specie->get_image_url()) ?>" required />
             </div>

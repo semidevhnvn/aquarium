@@ -1,8 +1,6 @@
 .header > .cover {
     display: block;
     height: 360px;
-
-    background-image: url(/aquarium/public/img/cover.jpg);
     background-position: center;
 }
 
