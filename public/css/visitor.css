@@ -99,6 +99,10 @@
     color: black;
 }
 
+.text-primary {
+    color: #1F689E;
+}
+
 .bg-primary {
     background-color: #1F689E;
 }
