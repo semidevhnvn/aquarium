@@ -13,11 +13,11 @@
 
             <div class="mb-3">
                 <label for="username" class="form-label"> Username </label>
-                <input type="text" class="form-control" name="username" pattern="\w{2,32}" value="<?php if (isset($_SESSION["submitted-username"])) /* then */ print($_SESSION["submitted-username"]) ?>" id="username" required />
+                <input type="text" class="form-control" name="username" pattern="\w{1,32}" value="<?php if (isset($_SESSION["submitted-username"])) /* then */ print($_SESSION["submitted-username"]) ?>" id="username" required />
             </div>
             <div class="mb-4">
                 <label for="password" class="form-label"> Password </label>
-                <input type="password" class="form-control" name="password" pattern="[\w!@#$%^&*]{8,32}" value="<?php if (isset($_SESSION["submitted-password"])) /* then */ print($_SESSION["submitted-password"]) ?>" id="password" required />
+                <input type="password" class="form-control" name="password" pattern="[\w!@#$%^&*]{1,32}" value="<?php if (isset($_SESSION["submitted-password"])) /* then */ print($_SESSION["submitted-password"]) ?>" id="password" required />
             </div>
 
         <?php if (isset($error_message)) { ?>
