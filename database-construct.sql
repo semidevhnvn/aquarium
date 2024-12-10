@@ -61,7 +61,7 @@ CREATE TABLE `event` (
 CREATE TABLE attendance (
     event_id   INT NOT NULL,
     visitor_id INT NOT NULL
-)
+);
 
 ALTER TABLE attendance
 ADD CONSTRAINT pk_attendance
