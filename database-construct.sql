@@ -10,8 +10,11 @@ CREATE TABLE administrator (
     password VARCHAR(32) NOT NULL
 );
 
-INSERT INTO administrator (id, username, password)
-VALUES (1, 'admin', '123456789');
+INSERT INTO administrator
+    (id, username , password)
+VALUES
+    ( 1, 'admin'  , '123456789'),
+    ( 2, 'semidev', '123456789');
 
 
 CREATE TABLE animal (
@@ -35,15 +38,6 @@ ADD CONSTRAINT fk_animal_specie
 FOREIGN KEY (specie_id) REFERENCES specie(id);
 
 
-CREATE TABLE `event` (
-    id            INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    kids_only     BOOLEAN      NOT NULL,
-    name          VARCHAR(128) NOT NULL,
-    description   MEDIUMTEXT   NOT NULL,
-    image_url     MEDIUMTEXT   NOT NULL,
-    starting_time DATETIME     NOT NULL
-);
-
 CREATE TABLE visitor (
     id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(32)  NOT NULL,
@@ -53,6 +47,16 @@ CREATE TABLE visitor (
     phone    VARCHAR(32)  NOT NULL UNIQUE,
     birthday DATE         NOT NULL
 );
+
+CREATE TABLE `event` (
+    id            INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    kids_only     BOOLEAN      NOT NULL,
+    name          VARCHAR(128) NOT NULL,
+    description   MEDIUMTEXT   NOT NULL,
+    image_url     MEDIUMTEXT   NOT NULL,
+    starting_time DATETIME     NOT NULL
+);
+
 
 CREATE TABLE attendance (
     event_id   INT NOT NULL,
