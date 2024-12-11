@@ -16,8 +16,8 @@ if (isset($_SESSION["admin_username"])) {
 else {
     $title = "Admin Login";
     $error_message = isset($_SESSION["login_error"]) ? $_SESSION["login_error"] : null;
-    include_once(__DIR__ . "/../view/page/admin/login.phtml");
 
+    include_once(__DIR__ . "/../view/page/admin/login.phtml");
     exit();
 }
 

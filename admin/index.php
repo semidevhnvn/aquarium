@@ -13,6 +13,7 @@ $visitor_count = database::select_count_all_visitor();
 $attendance_count = database::select_count_all_attendance();
 $review_count = database::select_count_all_review();
 $page_count = database::select_count_all_page();
+
 include_once(__DIR__ . "/../view/page/admin/index.phtml");
 
 ?>

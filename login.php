@@ -18,8 +18,8 @@ else {
     $title = "Visitor Login";
     $all_pages = database::select_all_page_order_by_order();
     $error_message = isset($_SESSION["login_error"]) ? $_SESSION["login_error"] : null;
-    include_once(__DIR__ . "/view/page/login.phtml");
 
+    include_once(__DIR__ . "/view/page/login.phtml");
     exit();
 }
 
