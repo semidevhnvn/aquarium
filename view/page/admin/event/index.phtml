@@ -17,7 +17,7 @@
                     <tr>
                         <th scope="col"> Name </th>
                         <th scope="col"> For </th>
-                        <th scope="col"> Image URL </th>
+                        <th scope="col"> Image </th>
                         <th scope="col"> Starting time </th>
                         <th scope="col"> Actions </th>
                     </tr>
@@ -28,13 +28,22 @@
                         <td> <?php print($event->get_name()) ?> </td>
                         <td> <?php print(($event->get_kids_only()) ? "Children" : "Everyone") ?> </td>
                         <td>
-                            <a class="text-decoration-none" href="<?php print($event->get_image_url()) ?>" target="_blank"> <?php print($event->get_image_url()) ?> </a>
+                            <a class="text-decoration-none" href="<?php print($event->get_image_url()) ?>" target="_blank">
+                                <img class="w-100px" src="<?php print($event->get_image_url()) ?>" />
+                            </a>
                         </td>
                         <td> <?php print($event->get_starting_time()) ?> </td>
                         <td>
-                            <a class="text-decoration-none" href="<?php print($base_url . "/event.php?id=" . $event->get_id()) ?>" target="_blank"> View </a>
-                            &nbsp; | &nbsp
-                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/event/edit.php?id=" . $event->get_id()) ?>"> Edit </a>
+                            <div class="mb-1">
+                                <a class="btn btn-light w-100px" href="<?php print($base_url . "/event.php?id=" . $event->get_id()) ?>" target="_blank">
+                                    <i class="far fa-eye"></i> View
+                                </a>
+                            </div>
+                            <div>
+                                <a class="btn btn-light w-100px" href="<?php print($base_url . "/admin/event/edit.php?id=" . $event->get_id()) ?>">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 <?php } // foreach ?>

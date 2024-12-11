@@ -45,3 +45,7 @@
 .bg-primary {
     background-color: #1F689E;
 }
+
+.w-100px {
+    width: 100px;
+}

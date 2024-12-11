@@ -18,7 +18,7 @@
                         <th scope="col"> Id </th>
                         <th scope="col"> Name </th>
                         <th scope="col"> Specie </th>
-                        <th scope="col"> Image URL </th>
+                        <th scope="col"> Image </th>
                         <th scope="col"> Actions </th>
                     </tr>
                 </thead>
@@ -29,14 +29,26 @@
                         <td> <?php print($animal_joined->animal->get_name()) ?> </td>
                         <td> <?php print($animal_joined->specie->get_name()) ?> </td>
                         <td>
-                            <a class="text-decoration-none" href="<?php print($animal_joined->animal->get_image_url()) ?>" target="_blank"> <?php print($animal_joined->animal->get_image_url()) ?> </a>
+                            <a class="text-decoration-none" href="<?php print($animal_joined->animal->get_image_url()) ?>" target="_blank">
+                                <img class="w-100px" src="<?php print($animal_joined->animal->get_image_url()) ?>" />
+                            </a>
                         </td>
                         <td>
-                            <a class="text-decoration-none" href="<?php print($base_url . "/animal.php?id=" . $animal_joined->animal->get_id()) ?>" target="_blank"> View </a>
-                            &nbsp; | &nbsp
-                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/animal/edit.php?id=" . $animal_joined->animal->get_id()) ?>"> Edit </a>
-                            &nbsp; | &nbsp
-                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/animal/delete.php?id=" . $animal_joined->animal->get_id()) ?>"> Delete </a>
+                            <div class="mb-1">
+                                <a class="btn btn-light w-100px" href="<?php print($base_url . "/animal.php?id=" . $animal_joined->animal->get_id()) ?>" target="_blank">
+                                    <i class="far fa-eye"></i> View
+                                </a>
+                            </div>
+                            <div class="mb-1">
+                                <a class="btn btn-light w-100px" href="<?php print($base_url . "/admin/animal/edit.php?id=" . $animal_joined->animal->get_id()) ?>">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                            </div>
+                            <div>
+                                <a class="btn btn-danger w-100px" href="<?php print($base_url . "/admin/animal/delete.php?id=" . $animal_joined->animal->get_id()) ?>">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 <?php } // foreach ?>

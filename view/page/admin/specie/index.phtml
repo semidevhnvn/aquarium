@@ -24,7 +24,7 @@
                         <th scope="col"> Id </th>
                         <th scope="col"> Name </th>
                         <th scope="col"> Description </th>
-                        <th scope="col"> Image URL </th>
+                        <th scope="col"> Image </th>
                         <th scope="col"> Featured </th>
                         <th scope="col"> Actions </th>
                     </tr>
@@ -36,13 +36,22 @@
                         <td> <?php print($specie->get_name()) ?> </td>
                         <td> <?php print($specie->get_description()) ?> </td>
                         <td>
-                            <a class="text-decoration-none" href="<?php print($specie->get_image_url()) ?>" target="_blank"> <?php print($specie->get_image_url()) ?> </a>
+                            <a class="text-decoration-none" href="<?php print($specie->get_image_url()) ?>" target="_blank">
+                                <img class="w-100px" src="<?php print($specie->get_image_url()) ?>" />
+                            </a>
                         </td>
                         <td> <?php print($specie->get_featured() ? "Yes" : "No") ?> </td>
                         <td>
-                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/specie/edit.php?id=" . $specie->get_id()) ?>"> Edit </a>
-                            &nbsp; | &nbsp
-                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/specie/delete.php?id=" . $specie->get_id()) ?>"> Delete </a>
+                            <div class="mb-1">
+                                <a class="btn btn-light w-100px" href="<?php print($base_url . "/admin/specie/edit.php?id=" . $specie->get_id()) ?>">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                            </div>
+                            <div>
+                                <a class="btn btn-danger w-100px" href="<?php print($base_url . "/admin/specie/delete.php?id=" . $specie->get_id()) ?>">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 <?php } // foreach ?>

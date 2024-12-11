@@ -30,11 +30,21 @@
                         <td> <?php print($page->get_title()) ?> </td>
                         <td> <?php print($page->get_order()) ?> </td>
                         <td>
-                            <a class="text-decoration-none" href="<?php print($base_url . "/page.php?slug=" . $page->get_slug()) ?>" target="_blank"> View </a>
-                            &nbsp; | &nbsp
-                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/page/edit.php?id=" . $page->get_id()) ?>"> Edit </a>
-                            &nbsp; | &nbsp
-                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/page/delete.php?id=" . $page->get_id()) ?>"> Delete </a>
+                            <div class="mb-1">
+                                <a class="btn btn-light w-100px" href="<?php print($base_url . "/page.php?slug=" . $page->get_slug()) ?>" target="_blank">
+                                    <i class="far fa-eye"></i> View
+                                </a>
+                            </div>
+                            <div class="mb-1">
+                                <a class="btn btn-light w-100px" href="<?php print($base_url . "/admin/page/edit.php?id=" . $page->get_id()) ?>">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                            </div>
+                            <div>
+                                <a class="btn btn-danger w-100px" href="<?php print($base_url . "/admin/page/delete.php?id=" . $page->get_id()) ?>">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 <?php } // foreach ?>

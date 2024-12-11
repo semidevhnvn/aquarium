@@ -35,9 +35,16 @@
                         <td> <?php print(substr($review_joined->review->get_feedback(), 0, 32) . "...") ?> </td>
                         <td> <?php print($review_joined->review->get_submit_time()) ?> </td>
                         <td>
-                            <a class="text-decoration-none" href="<?php print($base_url . "/reviews.php#" . $review_joined->review->get_id()) ?>" target="_blank"> View </a>
-                            &nbsp; | &nbsp
-                            <a class="text-decoration-none" href="<?php print($base_url . "/admin/review/delete.php?id=" . $review_joined->review->get_id()) ?>"> Delete </a>
+                            <div class="mb-1">
+                                <a class="btn btn-light w-100px" href="<?php print($base_url . "/reviews.php#" . $review_joined->review->get_id()) ?>" target="_blank">
+                                    <i class="far fa-eye"></i> View
+                                </a>
+                            </div>
+                            <div>
+                                <a class="btn btn-danger w-100px" href="<?php print($base_url . "/admin/review/delete.php?id=" . $review_joined->review->get_id()) ?>">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 <?php } // foreach ?>
