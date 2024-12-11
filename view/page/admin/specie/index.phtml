@@ -10,7 +10,9 @@
         <div class="container">
             <h1 class="mb-5"> Specie Index </h1>
 
-            <a class="btn btn-primary mb-3" href="<?php print($base_url . "/admin/specie/add.php") ?>"> Add Specie </a>
+            <a class="btn btn-primary mb-3" href="<?php print($base_url . "/admin/specie/add.php") ?>">
+                <i class="fas fa-plus-circle"></i> Add Specie
+            </a>
 
         <?php if (isset($error_message)) { ?>
             <div class="mb-2 text-danger">
