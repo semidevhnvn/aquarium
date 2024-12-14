@@ -19,24 +19,24 @@ $birthday = $_SESSION["submitted-birthday"] = $_POST["birthday"];
 
 $matched_username_account = database::select_visitor_by_username($username);
 if (isset($matched_username_account)) {
-    $_SESSION["error_message"] = "The username has been used by other";
+    $_SESSION["signup-error"] = "The username has been used by other";
     header("location: " . $base_url . "/signup.php");
 }
 
 $matched_email_account = database::select_visitor_by_email($email);
 if (isset($matched_email_account)) {
-    $_SESSION["error_message"] = "The email has been used by other";
+    $_SESSION["signup-error"] = "The email has been used by other";
     header("location: " . $base_url . "/signup.php");
 }
 
 $matched_phone_account = database::select_visitor_by_phone($phone);
 if (isset($matched_phone_account)) {
-    $_SESSION["error_message"] = "The phone has been used by other";
+    $_SESSION["signup-error"] = "The phone has been used by other";
     header("location: " . $base_url . "/signup.php");
 }
 
 if ($password != $confirm_password) {
-    $_SESSION["error_message"] = "The confirm password does not match";
+    $_SESSION["signup-error"] = "The confirm password does not match";
     header("location: " . $base_url . "/signup.php");
 }
 
@@ -50,6 +50,7 @@ if (isset($_SESSION["submitted-confirm-password"])) /* then */ unset($_SESSION["
 if (isset($_SESSION["submitted-email"])) /* then */ unset($_SESSION["submitted-email"]);
 if (isset($_SESSION["submitted-phone"])) /* then */ unset($_SESSION["submitted-phone"]);
 if (isset($_SESSION["submitted-birthday"])) /* then */ unset($_SESSION["submitted-birthday"]);
+
 header("location: " . $base_url . "/signup-success.php");
 
 ?>

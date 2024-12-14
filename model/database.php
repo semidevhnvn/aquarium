@@ -135,6 +135,36 @@ class database
         return $all_species;
     }
 
+    public static function select_all_specie_order_by_id_desc () : array
+    {
+        global $mysqli_connection;
+
+        $sql = "
+            SELECT id, name, description, image_url, featured
+            FROM specie
+            ORDER BY id DESC
+        ";
+
+        $result_set = $mysqli_connection->query($sql);
+
+        $all_species = [];
+
+        if (mysqli_num_rows($result_set) > 0) {
+            while ($record = mysqli_fetch_assoc($result_set)) {
+                $id          = (int) $record["id"];
+                $name        = stripslashes($record["name"]);
+                $description = stripslashes($record["description"]);
+                $image_url   = stripslashes($record["image_url"]);
+                $featured    = (bool) $record["featured"];
+
+                $specie = new specie($id, $name, $description, $image_url, $featured);
+                array_push($all_species, $specie);
+            }
+        }
+
+        return $all_species;
+    }
+
     public static function select_featured_specie () : array
     {
         global $mysqli_connection;
@@ -345,6 +375,36 @@ class database
         return $all_animals;
     }
 
+    public static function select_all_animal_order_by_id_desc () : array
+    {
+        global $mysqli_connection;
+
+        $sql = "
+            SELECT id, specie_id, name, description, image_url
+            FROM animal
+            ORDER BY id DESC
+        ";
+
+        $result_set = $mysqli_connection->query($sql);
+
+        $all_animals = [];
+
+        if (mysqli_num_rows($result_set) > 0) {
+            while ($record = mysqli_fetch_assoc($result_set)) {
+                $id          = (int) $record["id"];
+                $specie_id   = (int) $record["specie_id"];
+                $name        = stripslashes($record["name"]);
+                $description = stripslashes($record["description"]);
+                $image_url   = stripslashes($record["image_url"]);
+
+                $animal = new animal($id, $specie_id, $name, $description, $image_url);
+                array_push($all_animals, $animal);
+            }
+        }
+
+        return $all_animals;
+    }
+
     public static function select_animal_by_specie_id (int $specie_id) : array
     {
         global $mysqli_connection;
@@ -514,6 +574,21 @@ class database
          $all_animals_joined = [];
 
          $all_animals = database::select_all_animal();
+
+         foreach ($all_animals as $animal) {
+             $specie = database::select_specie_by_id($animal->get_specie_id());
+             $animal_joined = new animal_join_specie($animal, $specie);
+             array_push($all_animals_joined, $animal_joined);
+         }
+
+         return $all_animals_joined;
+     }
+
+     public static function select_all_animal_join_specie_order_by_animal_id_desc () : array
+     {
+         $all_animals_joined = [];
+
+         $all_animals = database::select_all_animal_order_by_id_desc();
 
          foreach ($all_animals as $animal) {
              $specie = database::select_specie_by_id($animal->get_specie_id());
@@ -1124,6 +1199,37 @@ class database
          $sql = "
              SELECT id, menu_name, title, body_text, `order`, slug
              FROM page
+         ";
+
+         $result_set = $mysqli_connection->query($sql);
+
+         $all_pages = [];
+
+         if (mysqli_num_rows($result_set) > 0) {
+             while ($record = mysqli_fetch_assoc($result_set)) {
+                 $id        = (int) $record["id"];
+                 $menu_name = stripslashes($record["menu_name"]);
+                 $title     = stripslashes($record["title"]);
+                 $body_text = stripslashes($record["body_text"]);
+                 $order     = (int) $record["order"];
+                 $slug      = stripslashes($record["slug"]);
+
+                 $page = new page($id, $menu_name, $title, $body_text, $order, $slug);
+                 array_push($all_pages, $page);
+             }
+         }
+
+         return $all_pages;
+     }
+
+     public static function select_all_page_order_by_id_desc () : array
+     {
+         global $mysqli_connection;
+
+         $sql = "
+             SELECT id, menu_name, title, body_text, `order`, slug
+             FROM page
+             ORDER BY id DESC
          ";
 
          $result_set = $mysqli_connection->query($sql);

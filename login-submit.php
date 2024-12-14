@@ -11,19 +11,19 @@ $password = $_POST["password"];
 $matched_username_account = database::select_visitor_by_username($username);
 
 if ($matched_username_account == null) {
-    $_SESSION["login_error"] = "Invalid login info";
+    $_SESSION["login-error"] = "Invalid login info";
     header("location: " . $base_url . "/login.php");
 }
 
 else if (! password_verify($password, $matched_username_account->get_password())) {
-    $_SESSION["login_error"] = "Invalid login info";
+    $_SESSION["login-error"] = "Invalid login info";
     header("location: " . $base_url . "/login.php");
 }
 
 else {
-    if (isset($_SESSION["login_error"])) /* then */ unset($_SESSION["login_error"]);
-    $_SESSION["visitor_username"] = $matched_username_account->get_username();
-    header("location: " . $_SESSION["return_url"]);
+    if (isset($_SESSION["login-error"])) /* then */ unset($_SESSION["login-error"]);
+    $_SESSION["visitor-username"] = $matched_username_account->get_username();
+    header("location: " . $_SESSION["return-url"]);
 }
 
 ?>

@@ -9,7 +9,7 @@ session_start();
 
 $id = database::select_latest_review_id();
 $id = ($id) ? ($id+1) : 1;
-$visitor = database::select_visitor_by_username($_SESSION["visitor_username"]);
+$visitor = database::select_visitor_by_username($_SESSION["visitor-username"]);
 $visitor_id = $visitor->get_id();
 $rating = (int) $_POST["rating"];
 $feedback = $_POST["feedback"];

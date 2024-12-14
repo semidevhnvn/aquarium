@@ -27,10 +27,10 @@
             <?php } // foreach ?>
             </ul>
 
-        <?php if (isset($_SESSION["visitor_username"])) { ?>
+        <?php if (isset($_SESSION["visitor-username"])) { ?>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "account")) /* then */ print("active") ?>" href="<?php print($base_url . "/account.php") ?>"> <?php print(strtoupper($_SESSION["visitor_username"])) ?> </a>
+                    <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "account")) /* then */ print("active") ?>" href="<?php print($base_url . "/account.php") ?>"> <?php print(strtoupper($_SESSION["visitor-username"])) ?> </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php if (str_contains($_SERVER["REQUEST_URI"], "attendance")) /* then */ print("active") ?>" href="<?php print($base_url . "/attendance.php") ?>"> ATTENDANCES </a>

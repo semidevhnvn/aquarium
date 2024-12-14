@@ -11,9 +11,15 @@
         <div class="container mw-360px">
             <h1 class="mb-5"> Account Info </h1>
 
+        <?php if (isset($update_error)) { ?>
+            <div class="mb-4 text-danger">
+                <?php print($update_error) ?>
+            </div>
+        <?php } // if ?>
+
         <?php if (isset($update_message)) { ?>
             <div class="mb-4 text-success">
-                <?php print($update_message); ?>
+                <?php print($update_message) ?>
             </div>
         <?php } // if ?>
 

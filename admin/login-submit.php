@@ -12,22 +12,22 @@ $password = $_POST["password"];
 $admin = database::select_admin_by_login_info($username, $password);
 
 if ($admin == null) {
-    $_SESSION["login_error"] = "Invalid login info";
+    $_SESSION["login-error"] = "Invalid login info";
     $_SESSION["submitted-username"] = $_POST["username"];
     $_SESSION["submitted-password"] = $_POST["password"];
-    header("location: {$_SESSION["return_url"]}");
+    header("location: {$_SESSION["return-url"]}");
 }
 else {
-    if (isset($_SESSION["login_error"])) /* then */ unset($_SESSION["login_error"]);
+    if (isset($_SESSION["login-error"])) /* then */ unset($_SESSION["login-error"]);
 
-    $_SESSION["admin_username"] = $admin->get_username();
+    $_SESSION["admin-username"] = $admin->get_username();
 
-    if (isset($_SESSION["return_url"]))
-        header("location: {$_SESSION["return_url"]}");
+    if (isset($_SESSION["return-url"]))
+        header("location: {$_SESSION["return-url"]}");
     else
         header("location: " . $base_url . "/admin/");
 
-    unset($_SESSION["return_url"]);
+    unset($_SESSION["return-url"]);
 }
 
 ?>
