@@ -4,6 +4,7 @@ COLLATE utf8mb4_unicode_ci;
 
 USE aquarium;
 
+
 CREATE TABLE administrator (
     id       INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(32) NOT NULL UNIQUE,
