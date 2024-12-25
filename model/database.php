@@ -64,7 +64,7 @@ class database
             SELECT id
             FROM specie
             ORDER BY id DESC
-            LIMIT 1;
+            LIMIT 1
         ";
 
         $result_set = $mysqli_connection->query($sql);
@@ -305,7 +305,7 @@ class database
             SELECT id
             FROM animal
             ORDER BY id DESC
-            LIMIT 1;
+            LIMIT 1
         ";
 
         $result_set = $mysqli_connection->query($sql);
@@ -607,7 +607,7 @@ class database
              SELECT id
              FROM event
              ORDER BY id DESC
-             LIMIT 1;
+             LIMIT 1
          ";
 
          $result_set = $mysqli_connection->query($sql);
@@ -858,7 +858,7 @@ class database
              SELECT id
              FROM visitor
              ORDER BY id DESC
-             LIMIT 1;
+             LIMIT 1
          ";
 
          $result_set = $mysqli_connection->query($sql);
@@ -1261,7 +1261,7 @@ class database
              SELECT id
              FROM page
              ORDER BY id DESC
-             LIMIT 1;
+             LIMIT 1
          ";
 
          $result_set = $mysqli_connection->query($sql);
@@ -1586,7 +1586,7 @@ class database
              SELECT id
              FROM review
              ORDER BY id DESC
-             LIMIT 1;
+             LIMIT 1
          ";
 
          $result_set = $mysqli_connection->query($sql);
