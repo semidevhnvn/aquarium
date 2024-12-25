@@ -14,7 +14,7 @@
             <h1 class="mb-5"> Add Animal </h1>
 
             <div class="mb-3 mw-360px">
-                <label for="name" class="form-label"> Specie </label>
+                <label for="specie-id" class="form-label"> Specie </label>
                 <select class="form-select" aria-label="specie-id" name="specie-id">
                 <?php foreach ($all_species as $specie) { ?>
                     <option value="<?php print($specie->get_id()) ?>">
